@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import {} from 'src/app/services/authentication.service';
+
 
 
 @Component({
@@ -8,9 +12,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  title = 'Login'
+  email: string = '';
+  password: string = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor() {
 
   }
+  ngOnInit(): void { }
 
+ 
 }

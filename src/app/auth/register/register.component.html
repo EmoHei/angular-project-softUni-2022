@@ -1,1 +1,37 @@
-<p>register works!</p>
+<div class="form-container mat-elevation-z5">
+  <h1>{{ title }}</h1>
+  <form>
+    <mat-form-field appearance="fill" class="form-control">
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        type="email"
+        placeholder="pat@example.com"
+        required
+       
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your Password</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        type="password"
+        placeholder="******"
+        required
+      />
+    </mat-form-field>
+    <div class="center margin-top">
+      <button 
+      mat-raised-button 
+      color="primary" 
+      type="submit"
+  >Register</button>
+    </div>
+
+    <span class="center margin-top"
+      >Already member?
+      <a class="sign-up-=link" routerLink="/auth/login">Sign In!</a></span
+    >
+  </form>
+</div>

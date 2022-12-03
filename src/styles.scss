@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body {
+   height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+
+
+
+// Login -Register
+
+.form-container {
+  display: block;
+  max-width: 600px;
+  margin: auto;
+  background: #eceff1;
+  padding: 48px;
+  border-radius: 16px;
+
+  mat-form-field {
+    width: 100%;
+  }
+  .center{
+    display: flex;
+    justify-content: center;
+  }
+  margin-top: 16px;
+  .text-center{
+    text-align: center;
+  }
+}
