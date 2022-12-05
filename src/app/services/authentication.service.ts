@@ -1,8 +1,12 @@
-
+import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
-
-
 import { Routes, RouterModule, Router } from '@angular/router';
+
+
+export class AuthenticationService  {
+
+}
+
 // @Injectable({
 //   providedIn: 'root'
 // })

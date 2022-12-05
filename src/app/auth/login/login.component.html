@@ -1,33 +1,32 @@
 <div class="form-container mat-elevation-z5">
   <h1>{{ title }}</h1>
-  <form>
+  <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm.value)">
     <mat-form-field appearance="fill" class="form-control">
       <mat-label>Enter your email</mat-label>
       <input
         matInput
-        type="email"
-        placeholder="pat@example.com"
+        name="email"
+        ngModel
         required
-       
+        placeholder="pat@example.com"
+        id="email"
+        type="email"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Enter your Password</mat-label>
       <input
         matInput
-        formControlName="password"
+        ngModel
+        required
+        name="password"
+        id="password"
         type="password"
         placeholder="******"
-        required
-       
       />
     </mat-form-field>
     <div class="center margin-top">
-      <button 
-      mat-raised-button 
-      color="primary" 
-      type="submit"
-    >Login</button>
+      <button mat-raised-button color="primary" type="submit">Login</button>
     </div>
 
     <span class="center margin-top"
@@ -36,4 +35,3 @@
     >
   </form>
 </div>
-

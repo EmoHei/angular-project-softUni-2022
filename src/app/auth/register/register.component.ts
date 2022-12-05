@@ -1,38 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import {Auth,createUserWithEmailAndPassword,} from '@angular/fire/auth'
 import { Router } from '@angular/router';
-
-
-
+  
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-// Register
+
 export class RegisterComponent implements OnInit {
   title = 'Register'
 
   email: string = '';
   password: string = '';
+ 
+  constructor(public auth: Auth, private router: Router) { }
 
-  registerForm!: FormGroup
-  constructor() { }
+  ngOnInit(): void { }
+  
+  // Register
+  handleRegister(value: any) {
 
-  ngOnInit(): void {
+    createUserWithEmailAndPassword(this.auth, value.email, value.password)
+      .then((response: any) => {
+        alert('Sign Up - <Successful>')
+        this.router.navigate(['/'])
+      })
+      .catch((err) => {
+        alert(err.message);
+      })
   }
-  // register() {
-  //   if (this.email == '') {
-  //     alert('Please enter email');
-  //     return;
-  //   }
-  //   if (this.password == '') {
-  //     alert('Please enter password');
-  //     return;
-  //   }
-  //   this.auth.registerUser(this.email, this.password);
-  //   this.email = '';
-  //   this.password = '';
-  // }
-
-}
+};
