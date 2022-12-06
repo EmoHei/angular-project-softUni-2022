@@ -5,28 +5,53 @@
       <mat-label>Enter your email</mat-label>
       <input
         matInput
+          type="email"
         name="email"
-        ngModel
+        [(ngModel)]="form.email"
         required
+         required
+        email
+       #emailField="ngModel"
+          [ngClass]="{ 'is-invalid': emailField.errors }"
         placeholder="pat@example.com"
-        id="email"
-        type="email"
       />
     </mat-form-field>
+    <!-- Error Msg -->
+     <div *ngIf="emailField.touched && emailField.errors" class="error-msg">
+      <div *ngIf="emailField.errors['required']">Email is required</div>
+      <div *ngIf="emailField.errors['email']">Email is invalid</div>
+    </div>
+    <!--  -->
     <mat-form-field appearance="fill">
       <mat-label>Enter your Password</mat-label>
       <input
         matInput
-        ngModel
-        required
-        name="password"
-        id="password"
         type="password"
+        name="password"
+        [(ngModel)]="form.password"
+        required
+        minlength="6"
+        ngModel
+        #passwordField="ngModel"
+        [ngClass]="{ 'is-invalid': passwordField.errors }"
         placeholder="******"
       />
     </mat-form-field>
+      <!-- Error Msg -->
+    <div *ngIf="passwordField.touched &&  passwordField.errors" class="error-msg">
+      <div *ngIf="passwordField.errors['required']">Password is required</div>
+      <div *ngIf="passwordField.errors['minlength']">
+        Password must be at least 6 characters
+      </div> 
+    </div>
+    <!--  -->
     <div class="center margin-top">
-      <button mat-raised-button color="primary" type="submit">Login</button>
+      <button 
+      mat-raised-button 
+      color="primary" 
+      type="submit"
+      [disabled]="!loginForm.valid"
+      >Login</button>
     </div>
 
     <span class="center margin-top"

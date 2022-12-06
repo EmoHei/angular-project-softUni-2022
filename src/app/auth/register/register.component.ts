@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Auth,createUserWithEmailAndPassword,} from '@angular/fire/auth'
+import {Auth, createUserWithEmailAndPassword} from '@angular/fire/auth'
 import { Router } from '@angular/router';
   
 @Component({
@@ -11,8 +11,11 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   title = 'Register'
 
-  email: string = '';
-  password: string = '';
+  form = {
+    email: '',
+    password: '',
+   confirmPassword:''
+  };
  
   constructor(public auth: Auth, private router: Router) { }
 
@@ -21,8 +24,9 @@ export class RegisterComponent implements OnInit {
   // Register
   handleRegister(value: any) {
 
-    createUserWithEmailAndPassword(this.auth, value.email, value.password)
-      .then((response: any) => {
+    createUserWithEmailAndPassword(this.auth, value.email, value.password )
+    
+      .then((res: any) => {
         alert('Sign Up - <Successful>')
         this.router.navigate(['/'])
       })

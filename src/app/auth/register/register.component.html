@@ -1,3 +1,6 @@
+
+
+
 <div class="form-container mat-elevation-z5">
   <h1>{{ title }}</h1>
   <form #registerForm="ngForm" (ngSubmit)="handleRegister(registerForm.value)">
@@ -5,47 +8,89 @@
       <mat-label>Enter your email</mat-label>
       <input
         matInput
-        name="email"
-        ngModel
-        placeholder="pat@example.com"
-        id="email"
         type="email"
+        name="email"
+        [(ngModel)]="form.email"
         required
+        email
+        #emailField="ngModel"
+        [ngClass]="{ 'is-invalid': emailField.errors }"
       />
     </mat-form-field>
+     <!-- Error Msg -->
+    <div *ngIf="emailField.touched && emailField.errors" class="error-msg">
+      <div *ngIf="emailField.errors['required']">Email is required</div>
+      <div *ngIf="emailField.errors['email']">Email is invalid</div>
+    </div>
+<!--  -->
     <mat-form-field appearance="fill">
       <mat-label>Enter your Password</mat-label>
       <input
         matInput
-        ngModel
-        required
-        id="password"
-        name="password"
-        placeholder="******"
         type="password"
+        name="password"
+        [(ngModel)]="form.password"
+        required
+        minlength="6"
+        ngModel
+        #passwordField="ngModel"
+        [ngClass]="{ 'is-invalid': passwordField.errors }"
+        placeholder="******"
       />
     </mat-form-field>
-    <!-- TODO  >>>> Confirm Pasword -->
+      <!-- Error Msg -->
+    <div *ngIf="passwordField.touched &&  passwordField.errors" class="error-msg">
+      <div *ngIf="passwordField.errors['required']">Password is required</div>
+      <div *ngIf="passwordField.errors['minlength']">
+        Password must be at least 6 characters
+      </div> 
+    </div>
+    <!--  -->
+    <!--  TODO  -> Confirm Pasword -->
 
-    <!-- <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill">
       <mat-label>Confirm Password</mat-label>
       <input 
       matInput
-      ngModel
-      required
-      id="repass"
-      name="repass"
-      placeholder="******"
-      type="password" 
+        type="password"
+        name="confirmPassword"
+        [(ngModel)]="form.confirmPassword"
+        required
+        #confirmPasswordField="ngModel"
+        [ngClass]="{ 'is-invalid': confirmPasswordField.errors }" 
        />
-    </mat-form-field> -->
+    </mat-form-field>
+
+     <div
+        *ngIf="confirmPasswordField.touched && confirmPasswordField.errors"
+        class="error-msg"
+      >
+        <div *ngIf="confirmPasswordField.errors['required']">
+          Confirm Password is required
+        </div>
+        <div *ngIf="confirmPasswordField.errors['matching']">
+          Confirm Password does not match
+        </div>
+      </div>
+
     <div class="center margin-top">
-      <button mat-raised-button color="primary" type="submit">Register</button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!registerForm.valid"
+      >
+        Register
+      </button>
     </div>
 
     <span class="center margin-top"
       >Already member?
       <a class="sign-up-=link" routerLink="/auth/login">Sign In!</a></span
     >
+
+   
   </form>
 </div>
+
+

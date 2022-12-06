@@ -11,8 +11,11 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   title = 'Login'
 
-   email: string = '';
-   password: string = '';
+  form = {
+    email: '',
+    password: '',
+    confirmPassword: ''
+  };
 
   constructor(public auth: Auth, private router: Router) {}
   
@@ -22,7 +25,7 @@ export class LoginComponent {
     signInWithEmailAndPassword(this.auth, value.email, value.password)
       .then((response: any) => {
         alert('Sign In - <Successful>')
-        this.router.navigate(['/'])
+        // this.router.navigate(['/'])
         // console.log(response.user);
       })
       .catch((err) => {
