@@ -5,7 +5,8 @@ import { TourRoutingModule } from './tour-routing.module';
 import { AllToursComponent } from './all-tours/all-tours.component';
 import { NewTourComponent } from './new-tour/new-tour.component';
 import { TourDetailsComponent } from './tour-details/tour-details.component';
-
+import { MaterialModule } from '../material/material.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { TourDetailsComponent } from './tour-details/tour-details.component';
   ],
   imports: [
     CommonModule,
-    TourRoutingModule
+    TourRoutingModule,
+  MaterialModule,
+    FormsModule
   ]
 })
 export class TourModule { }

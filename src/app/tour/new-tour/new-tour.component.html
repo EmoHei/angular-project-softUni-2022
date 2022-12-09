@@ -1,1 +1,83 @@
-<p>new-tour works!</p>
+<div class="form-container mat-elevation-z5">
+  <h1>{{ title }}</h1>
+  <form #dataForm="ngForm" (ngSubmit)="addData(dataForm.value)">
+    <mat-form-field appearance="fill" class="form-control">
+      <mat-label>Enter Tour Name</mat-label>
+      <input
+        matInput
+        type="text"
+        name="tourName"
+        [(ngModel)]="form.tourName"
+        required
+        minlength="4"
+        #tourNameField="ngModel"
+        [ngClass]="{ 'is-invalid': tourNameField.errors }"
+        placeholder="Tour Name"
+      />
+    </mat-form-field>
+    <!-- Error Msg -->
+    <div
+      *ngIf="tourNameField.touched && tourNameField.errors"
+      class="error-msg"
+    >
+      <div *ngIf="tourNameField.errors['required']">Tour Name is required!</div>
+      <div *ngIf="tourNameField.errors['minlength']">
+        Tour name must be at least 4 characters!
+      </div>
+    </div>
+    <!--  -->
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Add Image</mat-label>
+      <input
+        matInput
+        type="text"
+        name="image"
+        [(ngModel)]="form.tourImg"
+        required
+        ngModel
+        #imageField="ngModel"
+        [ngClass]="{ 'is-invalid': imageField.errors }"
+        placeholder="******"
+      />
+    </mat-form-field> -->
+    <!-- Error Msg -->
+    <!-- <div
+      *ngIf="imageField.touched && imageField.errors"
+      class="error-msg"
+    >
+      <div *ngIf="imageField.errors['required']">Image is required</div>
+    </div> -->
+
+     <mat-form-field appearance="fill">
+      <mat-label>Add Description</mat-label>
+      <input
+        matInput
+        type="text"
+        name="description"
+        [(ngModel)]="form.tourDescription"
+        required
+        ngModel
+        #descriptionField="ngModel"
+        [ngClass]="{ 'is-invalid': descriptionField.errors }"
+        placeholder="Some description"
+      />
+    </mat-form-field>
+    <!--  -->
+    <div class="center margin-top">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!dataForm.valid"
+       
+      >
+       Add Tour
+      </button>
+    </div>
+<!-- TODO add function to clear the form -->
+    <!-- <span class="center margin-top"
+      >New to our platform?
+      <a class="sign-up-=link" routerLink="/tour/all-tours">Back to All Tours</a></span
+    > -->
+  </form>
+</div>
