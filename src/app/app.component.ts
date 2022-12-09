@@ -32,30 +32,30 @@ export class AppComponent {
 
   // Auth
   //Register
-  handleRegister(value: any) {
+  // handleRegister(value: any) {
 
-    createUserWithEmailAndPassword(this.auth, value.email, value.password)
-      .then((response: any) => {
-        alert('Sign Up - <Successful>')
-        console.log(response.user);
+  //   createUserWithEmailAndPassword(this.auth, value.email, value.password)
+  //     .then((response: any) => {
+  //       alert('Sign Up - <Successful>')
+  //       console.log(response.user);
 
-      })
-      .catch((err) => {
-        alert(err.message);
-      })
-  }
+  //     })
+  //     .catch((err) => {
+  //       alert(err.message);
+  //     })
+  // }
 
   // Login
-  handleLogin(value: any) {
+  // handleLogin(value: any) {
 
-    signInWithEmailAndPassword(this.auth, value.email, value.password)
-      .then((response: any) => {
-        alert('Sign In - <Successful>')
-        console.log(response.user);
+  //   signInWithEmailAndPassword(this.auth, value.email, value.password)
+  //     .then((response: any) => {
+  //       alert('Sign In - <Successful>')
+  //       console.log(response.user);
 
-      })
-      .catch((err) => {
-        alert(err.message);
-      })
-  }
+  //     })
+  //     .catch((err) => {
+  //       alert(err.message);
+  //     })
+  // }
 }

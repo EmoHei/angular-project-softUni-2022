@@ -1,35 +1,42 @@
-import { Component, } from '@angular/core';
-import {  Auth, signInWithEmailAndPassword} from '@angular/fire/auth'
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FirebaseService } from 'src/app/services/firebase.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
-}) 
- 
-export class LoginComponent {
+})
+
+export class LoginComponent implements OnInit {
   title = 'Login'
+  isSignedIn = false
 
   form = {
     email: '',
     password: '',
-    confirmPassword: ''
+
   };
 
-  constructor(public auth: Auth, private router: Router) {}
-  
-  // LOGIN
-  handleLogin(value: any) {
+  constructor(public firebaseService: FirebaseService, private router: Router) { }
+  ngOnInit() {
+    if (localStorage.getItem('user') !== null) {
+      this.isSignedIn = true
+    } else {
+      this.isSignedIn = false
+    }
+  }
 
-    signInWithEmailAndPassword(this.auth, value.email, value.password)
-      .then((response: any) => {
-        alert('Sign In - <Successful>')
-        // this.router.navigate(['/'])
-        // console.log(response.user);
-      })
-      .catch((err) => {
-        alert(err.message);
-      })
+  //  Login
+  async onSignIn(email: string, password: string) {
+
+    await this.firebaseService.signIn(email, password)
+    if (this.firebaseService.isLoggedIn) {
+      this.isSignedIn = true
+      console.log(email, password);
+      console.log(this.isSignedIn);
+      this.router.navigate(['/'])
+    }
   }
 };

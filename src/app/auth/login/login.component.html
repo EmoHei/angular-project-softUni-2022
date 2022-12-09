@@ -1,23 +1,23 @@
 <div class="form-container mat-elevation-z5">
   <h1>{{ title }}</h1>
-  <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm.value)">
+  <form #loginForm="ngForm">
     <mat-form-field appearance="fill" class="form-control">
       <mat-label>Enter your email</mat-label>
       <input
         matInput
-          type="email"
+        type="email"
         name="email"
         [(ngModel)]="form.email"
         required
-         required
+        required
         email
-       #emailField="ngModel"
-          [ngClass]="{ 'is-invalid': emailField.errors }"
+        #emailField="ngModel"
+        [ngClass]="{ 'is-invalid': emailField.errors }"
         placeholder="pat@example.com"
       />
     </mat-form-field>
     <!-- Error Msg -->
-     <div *ngIf="emailField.touched && emailField.errors" class="error-msg">
+    <div *ngIf="emailField.touched && emailField.errors" class="error-msg">
       <div *ngIf="emailField.errors['required']">Email is required</div>
       <div *ngIf="emailField.errors['email']">Email is invalid</div>
     </div>
@@ -37,21 +37,27 @@
         placeholder="******"
       />
     </mat-form-field>
-      <!-- Error Msg -->
-    <div *ngIf="passwordField.touched &&  passwordField.errors" class="error-msg">
+    <!-- Error Msg -->
+    <div
+      *ngIf="passwordField.touched && passwordField.errors"
+      class="error-msg"
+    >
       <div *ngIf="passwordField.errors['required']">Password is required</div>
       <div *ngIf="passwordField.errors['minlength']">
         Password must be at least 6 characters
-      </div> 
+      </div>
     </div>
     <!--  -->
     <div class="center margin-top">
-      <button 
-      mat-raised-button 
-      color="primary" 
-      type="submit"
-      [disabled]="!loginForm.valid"
-      >Login</button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!loginForm.valid"
+        (click)="onSignIn(emailField.value, passwordField.value)"
+      >
+        Login
+      </button>
     </div>
 
     <span class="center margin-top"

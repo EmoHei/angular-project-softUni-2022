@@ -1,9 +1,6 @@
-
-
-
 <div class="form-container mat-elevation-z5">
   <h1>{{ title }}</h1>
-  <form #registerForm="ngForm" (ngSubmit)="handleRegister(registerForm.value)">
+  <form #registerForm="ngForm">
     <mat-form-field appearance="fill" class="form-control">
       <mat-label>Enter your email</mat-label>
       <input
@@ -13,16 +10,16 @@
         [(ngModel)]="form.email"
         required
         email
-        #emailField="ngModel"
-        [ngClass]="{ 'is-invalid': emailField.errors }"
+        #emailSignUp="ngModel"
+        [ngClass]="{ 'is-invalid': emailSignUp.errors }"
       />
     </mat-form-field>
-     <!-- Error Msg -->
-    <div *ngIf="emailField.touched && emailField.errors" class="error-msg">
-      <div *ngIf="emailField.errors['required']">Email is required</div>
-      <div *ngIf="emailField.errors['email']">Email is invalid</div>
+    <!-- Error Msg -->
+    <div *ngIf="emailSignUp.touched && emailSignUp.errors" class="error-msg">
+      <div *ngIf="emailSignUp.errors['required']">Email is required</div>
+      <div *ngIf="emailSignUp.errors['email']">Email is invalid</div>
     </div>
-<!--  -->
+    <!--  -->
     <mat-form-field appearance="fill">
       <mat-label>Enter your Password</mat-label>
       <input
@@ -33,45 +30,48 @@
         required
         minlength="6"
         ngModel
-        #passwordField="ngModel"
-        [ngClass]="{ 'is-invalid': passwordField.errors }"
+        #passwordSignUp="ngModel"
+        [ngClass]="{ 'is-invalid': passwordSignUp.errors }"
         placeholder="******"
       />
     </mat-form-field>
-      <!-- Error Msg -->
-    <div *ngIf="passwordField.touched &&  passwordField.errors" class="error-msg">
-      <div *ngIf="passwordField.errors['required']">Password is required</div>
-      <div *ngIf="passwordField.errors['minlength']">
+    <!-- Error Msg -->
+    <div
+      *ngIf="passwordSignUp.touched && passwordSignUp.errors"
+      class="error-msg"
+    >
+      <div *ngIf="passwordSignUp.errors['required']">Password is required</div>
+      <div *ngIf="passwordSignUp.errors['minlength']">
         Password must be at least 6 characters
-      </div> 
+      </div>
     </div>
     <!--  -->
     <!--  TODO  -> Confirm Pasword -->
 
-    <mat-form-field appearance="fill">
+    <!-- <mat-form-field appearance="fill">
       <mat-label>Confirm Password</mat-label>
-      <input 
-      matInput
+      <input
+        matInput
         type="password"
         name="confirmPassword"
         [(ngModel)]="form.confirmPassword"
         required
         #confirmPasswordField="ngModel"
-        [ngClass]="{ 'is-invalid': confirmPasswordField.errors }" 
-       />
+        [ngClass]="{ 'is-invalid': confirmPasswordField.errors }"
+      />
     </mat-form-field>
 
-     <div
-        *ngIf="confirmPasswordField.touched && confirmPasswordField.errors"
-        class="error-msg"
-      >
-        <div *ngIf="confirmPasswordField.errors['required']">
-          Confirm Password is required
-        </div>
-        <div *ngIf="confirmPasswordField.errors['matching']">
-          Confirm Password does not match
-        </div>
+    <div
+      *ngIf="confirmPasswordField.touched && confirmPasswordField.errors"
+      class="error-msg"
+    >
+      <div *ngIf="confirmPasswordField.errors['required']">
+        Confirm Password is required
       </div>
+      <div *ngIf="confirmPasswordField.errors['matching']">
+        Confirm Password does not match
+      </div>
+    </div> -->
 
     <div class="center margin-top">
       <button
@@ -79,6 +79,7 @@
         color="primary"
         type="submit"
         [disabled]="!registerForm.valid"
+        (click)="onSignUp(emailSignUp.value, passwordSignUp.value)"
       >
         Register
       </button>
@@ -88,9 +89,5 @@
       >Already member?
       <a class="sign-up-=link" routerLink="/auth/login">Sign In!</a></span
     >
-
-   
   </form>
 </div>
-
-

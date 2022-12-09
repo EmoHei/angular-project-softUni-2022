@@ -11,8 +11,8 @@ html,body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-
 a {
+  cursor: pointer;
   text-decoration: none;
 }
 
@@ -20,15 +20,12 @@ li {
   list-style: none;
 }
 
-
-
-
 // Login -Register
 
 .form-container {
   display: block;
   max-width: 600px;
-  margin: auto;
+  margin: 20%;
   background: #eceff1;
   padding: 48px;
   border-radius: 16px;
@@ -40,7 +37,7 @@ li {
     display: flex;
     justify-content: center;
   }
-  margin-top: 16px;
+  
   .text-center{
     text-align: center;
   }

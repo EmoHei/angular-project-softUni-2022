@@ -1,7 +1,7 @@
 <nav class="navbar">
   <!-- LOGO -->
 
-  <div class="logo">TRAVEL-MARKET</div>
+  <div class="logo"><a routerLink="/">TRAVEL-MARKET</a> </div>
 
   <!-- NAVIGATION MENU -->
 
@@ -13,29 +13,24 @@
     <label for="checkbox_toggle" class="hamburger">&#9776;</label>
 
     <!-- NAVIGATION MENUS -->
-
+    <!-- User (isLoggedIn) -->
     <div class="menu">
-      <li><a routerLink="/auth/profile">Profile</a></li>
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="/auth/logout">Logout</a></li>
-      <li><a routerLink="/auth/login">Login</a></li>
-      <li><a routerLink="/auth/register">Register</a></li>
-      <li><a routerLink="/tour/all-tours">All-Tours</a></li>
-      <li><a routerLink="/tour/new-tour">New-Tours</a></li>
+      <ng-template #User>
+        <li><a routerLink="/auth/profile">Profile</a></li> 
+        <li><a routerLink="/tour/all-tours">All-Tours</a></li>
+        <li><a routerLink="/tour/new-tour">New-Tours</a></li>
+        <li><a routerLink="contact">Contact</a></li>
+        <li><a (click)="logout()">Logout</a></li>
+      </ng-template>
 
-      <li class="services">
-        <a>Tours</a>
-
-        <!-- DROPDOWN MENU -->
-
-        <ul class="dropdown">
-          <li><a routerLink="/tour/all-tours">All-Tours</a></li>
-
-          <li><a routerLink="/tour/new-tour">New-Tours</a></li>
-        </ul>
-      </li>
-
-      <li><a routerLink="contact">Contact</a></li>
+      <!-- Guest -->
+      <ng-template #Guest>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/auth/login">Login</a></li>
+        <li><a routerLink="/auth/register">Register</a></li>
+      </ng-template>
+      <ng-container *ngTemplateOutlet="isLoggedIn ? User : Guest">
+      </ng-container>
     </div>
   </ul>
 </nav>
