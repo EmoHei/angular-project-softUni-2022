@@ -7,12 +7,14 @@ import { NewTourComponent } from './new-tour/new-tour.component';
 import { TourDetailsComponent } from './tour-details/tour-details.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
     AllToursComponent,
     NewTourComponent,
-    TourDetailsComponent
+    TourDetailsComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,

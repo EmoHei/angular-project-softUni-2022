@@ -2,6 +2,7 @@
   <h1>{{ title }}</h1>
   <form #dataForm="ngForm" (ngSubmit)="addData(dataForm.value)">
     <mat-form-field appearance="fill" class="form-control">
+      <!-- Tour Name -->
       <mat-label>Enter Tour Name</mat-label>
       <input
         matInput
@@ -25,56 +26,111 @@
         Tour name must be at least 4 characters!
       </div>
     </div>
-    <!--  -->
-    <!-- <mat-form-field appearance="fill">
+
+    <!-- TODO add image field -->
+    <!-- Image -->
+    <mat-form-field appearance="fill">
       <mat-label>Add Image</mat-label>
       <input
         matInput
-        type="text"
         name="image"
         [(ngModel)]="form.tourImg"
         required
         ngModel
         #imageField="ngModel"
         [ngClass]="{ 'is-invalid': imageField.errors }"
-        placeholder="******"
+        placeholder="https://example.image.png"
       />
-    </mat-form-field> -->
+      
+    </mat-form-field>
+
     <!-- Error Msg -->
-    <!-- <div
+    <div 
       *ngIf="imageField.touched && imageField.errors"
       class="error-msg"
-    >
+    > 
       <div *ngIf="imageField.errors['required']">Image is required</div>
-    </div> -->
+    </div> 
 
-     <mat-form-field appearance="fill">
-      <mat-label>Add Description</mat-label>
+    <!-- TODO  Add number for price -->
+    <!-- Price -->
+    <mat-form-field appearance="fill">
+      <mat-label>Add Price</mat-label>
       <input
+        matInput
+        type="number"
+        min="10"
+        max="300"
+        name="price"
+        [(ngModel)]="form.tourPrice"
+        required
+        ngModel
+        #priceField="ngModel"
+        [ngClass]="{ 'is-invalid': priceField.errors }"
+        placeholder="Price"
+      />
+    </mat-form-field>
+     <div
+      *ngIf="priceField.touched && priceField.errors"
+      class="error-msg"
+    >
+      <div *ngIf="priceField.errors['required']">
+        Price is required!
+      </div>
+      <div *ngIf="priceField.errors['min']">
+        Price must be at least 10 EUR!
+      </div>
+      <div *ngIf="priceField.errors['max']">
+        Price can be max. 300 EUR!
+      </div>
+    </div>
+    <!-- Description -->
+
+    <mat-form-field appearance="fill">
+      <mat-label>Add Description</mat-label>
+      <textarea
+      rows="3"
         matInput
         type="text"
         name="description"
         [(ngModel)]="form.tourDescription"
         required
         ngModel
+        minlength="10"
+        maxlength="220"
         #descriptionField="ngModel"
         [ngClass]="{ 'is-invalid': descriptionField.errors }"
         placeholder="Some description"
-      />
+      >
+      </textarea>
     </mat-form-field>
-    <!--  -->
+    <div
+      *ngIf="descriptionField.touched && descriptionField.errors"
+      class="error-msg"
+    >
+      <div *ngIf="descriptionField.errors['required']">
+        Description is required!
+      </div>
+      <div *ngIf="descriptionField.errors['minlength']">
+        Description must be at least 10 characters long!
+      </div>
+      <div *ngIf="descriptionField.errors['maxlength']">
+        Description can be max. 100 characters long!
+      </div>
+    </div>
+
+    <!-- Add Btn -->
     <div class="center margin-top">
       <button
         mat-raised-button
         color="primary"
         type="submit"
         [disabled]="!dataForm.valid"
-       
       >
-       Add Tour
+        Add Tour
       </button>
     </div>
-<!-- TODO add function to clear the form -->
+    <!-- TODO add function to clear the form -->
     <!-- <span class="center margin-top"
       >New to our platform?
       <a class="sign-up-=link" routerLink="/tour/all-tours">Back to All Tours</a></span

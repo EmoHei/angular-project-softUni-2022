@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    margin: 10px;
+    min-width: 400px;
+    border: solid 1px;
+  }
+
+  .tour-card {
+    max-width: 400px;
+    height: 100%;
+  }
+
+  .header-image {
+    background-size: contain;
+  }
+  .mat-card-content p {
+    height: 200px;
+  }
+  mat-card-actions {
+ 
+    display: flex;
+    justify-content: space-between;
+    button {
+
+    }
+  }
+}

@@ -27,12 +27,12 @@ export class NewTourComponent {
 
   form = {
     tourName: '',
-    // tourPrice: '',
-    // tourImg: '',
-    tourDescription:'',
-    // ownerId:''
+    tourPrice: '',
+    tourImg: '',
+    tourDescription: '',
+    ownerId: ''
   };
-  constructor(public firestore: Firestore,public router:Router) { }
+  constructor(public firestore: Firestore, public router: Router) { }
   addData(value: any) {
 
     const dbInstance = collection(this.firestore, 'tours'); // "tours" is the name of collection in Firebase
