@@ -26,15 +26,15 @@ export class NewTourComponent {
   public data: any = [];
 
   form = {
-    tourName: '',
-    tourPrice: '',
-    tourImg: '',
-    tourDescription: '',
+  name: '',
+  price: '',
+   image: '',
+ description: '',
     ownerId: ''
   };
   constructor(public firestore: Firestore, public router: Router) { }
   addData(value: any) {
-
+value.ownerId = localStorage.getItem('user')
     const dbInstance = collection(this.firestore, 'tours'); // "tours" is the name of collection in Firebase
     addDoc(dbInstance, value)
       .then(() => {

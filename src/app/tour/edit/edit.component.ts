@@ -1,15 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TourService } from 'src/app/services/tour.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   Firestore,
-  collection,
-  // for get
-  getDocs,
-  // for update
   doc,
   updateDoc,
-  // for delete
-  deleteDoc
+  getDoc,
 
 } from '@angular/fire/firestore';
 
@@ -20,18 +16,52 @@ import {
 })
 export class EditComponent {
   title = 'Edit'
-  form = {
-    tourName: '',
-    tourPrice: '',
-    tourDescription: '',
-    tourImg: ''
+  form: any
+  tourId!: string
+  // form = {
+  //   tourName: '',
+  //   tourPrice: '',
+  //   tourDescription: '',
+  //   tourImg: ''
+  // }
+  constructor(private firestore: Firestore, public tourService: TourService, private route: ActivatedRoute, private router: Router) {
+
   }
-  constructor(private firestore: Firestore, tourService:TourService) {
-  
-   }
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+
+      this.getDataBtId(params['id']);
+      this.tourId = params['id']
+    });
+  }
+  // getDataById
+  getDataBtId(id: any) {
+    const dbInstance = doc(this.firestore, 'tours', id);
+
+    getDoc(dbInstance)
+      .then((res) => {
+        this.form = res.data();
+
+      });
+  }
   // Update
 
+  updateData() {
+    const dataToUpdate = doc(this.firestore, 'tours', this.tourId)
+    updateDoc(dataToUpdate, this.form
 
-  
-
+    )
+      .then(() => {
+        alert('Data Updated - <Successful>')
+        this.router.navigate(['/tour/all-tours'])
+      })
+      .catch((err => {
+        alert(err.message)
+      }))
+  }
 }
+
+
+
+

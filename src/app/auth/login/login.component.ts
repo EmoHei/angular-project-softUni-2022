@@ -34,8 +34,6 @@ export class LoginComponent implements OnInit {
     await this.authService.signIn(email, password)
     if (this.authService.isLoggedIn) {
       this.isSignedIn = true
-      console.log(email, password);
-      console.log(this.isSignedIn);
       this.router.navigate(['/tour/all-tours'])
     }
   }

@@ -14,6 +14,8 @@ export class AuthService {
       .then(res => {
         this.isLoggedIn = true
         localStorage.setItem('user', JSON.stringify(res.user))
+        console.log(res.user);
+        
       })
       .catch((err) => {
         alert(err.message);

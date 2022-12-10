@@ -11,7 +11,7 @@ const routes: Routes = [
     children: [
       { path: 'all-tours', component: AllToursComponent, data: { title: 'All Tours' } },
       { path: 'new-tour', component: NewTourComponent, data: { title: 'New Tour' } },
-      { path: 'edit', component: EditComponent, data: { title: 'Edit' } },
+      { path: 'edit/:id', component: EditComponent, data: { title: 'Edit' } },
       { path: 'tour-details/:id', component:TourDetailsComponent , data: { title: 'Tour Details' } },
 
     ]

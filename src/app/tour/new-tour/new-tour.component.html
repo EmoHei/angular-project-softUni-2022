@@ -8,7 +8,7 @@
         matInput
         type="text"
         name="tourName"
-        [(ngModel)]="form.tourName"
+        [(ngModel)]="form.name"
         required
         minlength="4"
         #tourNameField="ngModel"
@@ -34,7 +34,7 @@
       <input
         matInput
         name="image"
-        [(ngModel)]="form.tourImg"
+        [(ngModel)]="form.image"
         required
         ngModel
         #imageField="ngModel"
@@ -62,7 +62,7 @@
         min="10"
         max="300"
         name="price"
-        [(ngModel)]="form.tourPrice"
+        [(ngModel)]="form.price"
         required
         ngModel
         #priceField="ngModel"
@@ -93,7 +93,7 @@
         matInput
         type="text"
         name="description"
-        [(ngModel)]="form.tourDescription"
+        [(ngModel)]="form.description"
         required
         ngModel
         minlength="10"

@@ -7,8 +7,5 @@ export const environment = {
     authDomain: 'angular-exam-32001.firebaseapp.com',
     messagingSenderId: '898539425158',
   },
-  
-
-
     production: false
 };
