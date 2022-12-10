@@ -6,31 +6,29 @@
   <!-- NAVIGATION MENU -->
 
   <ul class="nav-links">
-    <!-- USING CHECKBOX HACK -->
-
+   
     <input type="checkbox" id="checkbox_toggle" />
 
     <label for="checkbox_toggle" class="hamburger">&#9776;</label>
-<!--  TODO after add tours -remove- -->
-    <!-- NAVIGATION MENUS -->
+ 
     <!-- User (isLoggedIn) -->
     <div class="menu">
-      <!-- <ng-template #User> -->
+      <ng-template #User>
         <li><a routerLink="/auth/profile">Profile</a></li> 
         <li><a routerLink="/tour/all-tours">All-Tours</a></li>
         <li><a routerLink="/tour/new-tour">New-Tours</a></li>
         <li><a routerLink="contact">Contact</a></li>
         <li><a (click)="logout()">Logout</a></li>
-      <!-- </ng-template> -->
+      </ng-template>
 
       <!-- Guest -->
-      <!-- <ng-template #Guest> -->
+      <ng-template #Guest>
         <li><a routerLink="/">Home</a></li>
         <li><a routerLink="/auth/login">Login</a></li>
         <li><a routerLink="/auth/register">Register</a></li>
-      <!-- </ng-template> -->
-      <!-- <ng-container *ngTemplateOutlet="isLoggedIn ? User : Guest">
-      </ng-container> -->
+      </ng-template>
+      <ng-container *ngTemplateOutlet="isLoggedIn ? User : Guest"> 
+      </ng-container> 
     </div>
   </ul>
 </nav>

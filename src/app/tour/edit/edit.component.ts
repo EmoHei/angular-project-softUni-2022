@@ -18,12 +18,7 @@ export class EditComponent {
   title = 'Edit'
   form: any
   tourId!: string
-  // form = {
-  //   tourName: '',
-  //   tourPrice: '',
-  //   tourDescription: '',
-  //   tourImg: ''
-  // }
+  
   constructor(private firestore: Firestore, public tourService: TourService, private route: ActivatedRoute, private router: Router) {
 
   }

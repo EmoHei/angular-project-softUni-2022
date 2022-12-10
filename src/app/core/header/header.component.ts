@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout() //clear all cocies from the browser
+    this.authService.logout() 
     this.isLogout.emit()
     this.router.navigate(['/'])
   }
