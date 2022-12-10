@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Auth, } from '@angular/fire/auth' // AngularFireAuth (before)
+import { Auth, } from '@angular/fire/auth' 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FirebaseService {
+export class AuthService {
   isLoggedIn = false;
   constructor(public firebaseAuth: Auth) { }
   // LOGIN

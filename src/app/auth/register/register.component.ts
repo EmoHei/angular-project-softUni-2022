@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from 'src/app/services/firebase.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     confirmPassword: ''
   };
 
-  constructor(public firebaseService: FirebaseService, private router: Router) { }
+  constructor(public authService: AuthService, private router: Router) { }
   ngOnInit() {
     if (localStorage.getItem('user') !== null) {
       this.isSignedIn = true
@@ -26,30 +26,13 @@ export class RegisterComponent implements OnInit {
     }
   }
  
-
   // Register
-  // handleRegister(value: any) {
-
-  //   createUserWithEmailAndPassword(this.auth, value.email, value.password)
-
-  //     .then((res: any) => {
-  //       alert('Sign Up - <Successful>')
-
-  //       this.router.navigate(['/'])
-  //     })
-  //     .catch((err) => {
-  //       alert(err.message);
-  //     })
-
-
-  // }
+ 
   async onSignUp(email: string, password: string) {
-    await this.firebaseService.signup(email, password)
-    if (this.firebaseService.isLoggedIn) {
+    await this.authService.signup(email, password)
+    if (this.authService.isLoggedIn) {
       this.isSignedIn = true
-      console.log(email, password);
-      console.log(this.isSignedIn);
-      this.router.navigate(['/'])
+      this.router.navigate(['/tour/all-tours'])
     }
   }
 };

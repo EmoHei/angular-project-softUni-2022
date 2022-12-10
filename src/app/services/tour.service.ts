@@ -1,8 +1,4 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-// TODO TourService-
-import { TourService } from 'src/app/services/tour.service'; 
-//Remove ==================
+import { Injectable } from '@angular/core';
 import {
   Firestore,
   collection,
@@ -15,19 +11,12 @@ import {
   deleteDoc
 
 } from '@angular/fire/firestore';
-import { formatCurrency } from '@angular/common';
-//===============================
-@Component({
-  selector: 'app-all-tours',
-  templateUrl: './all-tours.component.html',
-  styleUrls: ['./all-tours.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
-
-export class AllToursComponent {
-  title = 'All Tours';
+export class TourService {
   public data: any = [];
-  constructor(public firestore: Firestore, public fire: TourService, public router: Router) { 
-    
+  constructor(public  firestore:Firestore) { 
     this.getData()
   }
 
@@ -37,10 +26,10 @@ export class AllToursComponent {
     const dbInstance = collection(this.firestore, 'tours');
     getDocs(dbInstance)
       .then((res) => {
-        console.log(res.docs.map((item) =>{
+        console.log(res.docs.map((item) => {
           return { ...item.data(), id: item.id }
         }));
-        
+
         this.data = [...res.docs.map((item) => {
           return { ...item.data(), id: item.id }
 
@@ -53,9 +42,9 @@ export class AllToursComponent {
   updateData(id: string) {
     const dataToUpdate = doc(this.firestore, 'tours', id)
     updateDoc(dataToUpdate, {
-      // TODO This is static!! Make dinamic wit form 
+      // TODO This is static!! Make dinamic wit form
       tourName: '',
-      price: 150,
+      tourPrice: '',
     })
       .then(() => {
         alert('Data Updated - <Successful>')
@@ -66,6 +55,7 @@ export class AllToursComponent {
       }))
     this.getData()
   }
+
   // Delete Data
   deleteData(id: string) {
     const dataToDelete = doc(this.firestore, 'tours', id)
@@ -79,6 +69,5 @@ export class AllToursComponent {
       }))
   }
 
- 
-  
+
 }

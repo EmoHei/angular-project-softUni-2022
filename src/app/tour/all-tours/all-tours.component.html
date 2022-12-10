@@ -20,7 +20,10 @@
         </mat-card-content>
         <p>{{item.price}}.00</p>
         <mat-card-actions>
-          <button mat-flat-button color="primary" [routerLink]="['/']">
+          <!-- <button mat-flat-button color="primary" (click)="updateData(item.id)" >
+            EDIT
+          </button> -->
+           <button mat-flat-button color="primary" routerLink="/tour/edit">
             EDIT
           </button>
           <button mat-flat-button color="warn" (click)="deleteData(item.id)">
