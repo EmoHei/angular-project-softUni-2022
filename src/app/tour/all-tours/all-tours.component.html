@@ -1,37 +1,107 @@
-<div>
+<!-- <div>
   <ul class="wrapper">
     <li *ngFor="let item of data">
-  
       <div></div>
       <mat-card class="tour-card">
         <mat-card-header>
-          <mat-card-title>{{ item.tourName }}</mat-card-title>
-        
+          <mat-card-title>{{ item.name }}</mat-card-title>
         </mat-card-header>
 
         <img mat-card-image src="{{ item.image }}" alt="Tour-image" />
+        <div class="description-content">
+          <mat-card-content>
+            <p>
+              {{ item.description }}
+            </p>
+          </mat-card-content>
+        </div>
 
-        <mat-card-content>
-          <p>
-            {{ item.description }}
-          </p>
-        </mat-card-content>
-        <p>{{item.price}}.00</p>
         <mat-card-actions>
-      
-           <button *ngIf="isCurrentUserOwner(item.ownerId)" mat-flat-button color="primary"  routerLink="/tour/edit/{{item.id}}">
-            EDIT
-          </button>
-        
-          <button *ngIf="isCurrentUserOwner(item.ownerId)" mat-flat-button color="warn" (click)="deleteData(item.id)">
-            DELETE
-          </button>
-         
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-         
+          <ng-template #Owner>
+            <button
+              class="edit-btn"
+              mat-flat-button
+              routerLink="/tour/edit/{{ item.id }}"
+            >
+              EDIT
+            </button>
+
+            <button mat-flat-button color="warn" (click)="deleteData(item.id)">
+              DELETE
+            </button>
+          </ng-template>
+          <ng-template #Guest>
+            <button class="book-now-btn" mat-button>BOOK NOW</button>
+          </ng-template>
+          <div class="price">
+            <p>
+              <span>{{ item.price | currency : "CHF/" }}</span>
+            </p>
+          </div>
+          <ng-container
+            *ngTemplateOutlet="isCurrentUserOwner(item.ownerId) ? Owner : Guest"
+          ></ng-container>
         </mat-card-actions>
       </mat-card>
     </li>
   </ul>
-</div>
+</div> -->
+
+<!--  Start New Card -->
+<article>
+  <ul class="card-content">
+    <li *ngFor="let item of data">
+      <div class="wrapper">
+        <div class="product-img">
+          <img src="{{ item.image }}" height="420" width="327" />
+        </div>
+        <div class="product-info">
+          <div class="product-text">
+            <h1>{{ item.name }}</h1>
+            <h2>by studio and friends</h2>
+            <p>{{ item.description }}</p>
+          </div>
+           <p class="price">
+              {{ item.price | currency : "EUR" }}  
+            </p>
+
+          <div class="product-price-btn">
+           
+            <!-- Owner -->
+            <ng-template #Owner>
+              <button
+                class="edit-btn"
+           
+                mat-flat-button
+                routerLink="/tour/edit/{{ item.id }}"
+              >
+                EDIT
+              </button>
+
+              <button
+                mat-flat-button
+               class="delete-btn"
+                (click)="deleteData(item.id)"
+              >
+                DELETE
+              </button>
+            </ng-template>
+
+            <!-- Guest -->
+            <ng-template #Guest>
+              <button class="book-now-btn" mat-button>BOOK NOW</button>
+            </ng-template>
+
+            <ng-container
+              *ngTemplateOutlet="
+                isCurrentUserOwner(item.ownerId) ? Owner : Guest
+              "
+            ></ng-container>
+
+          
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</article>
