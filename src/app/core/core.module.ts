@@ -13,15 +13,18 @@ import { ContactComponent } from './contact/contact.component';
   declarations: [
     HeaderComponent,
     HomeComponent,
+     FooterComponent,
     PageNotFoundComponent,
-    FooterComponent,
+   
     ContactComponent
+
   ],
   imports: [
     CommonModule,
     RouterModule,
   ],exports:[
     HeaderComponent,
+    FooterComponent
   ]
 })
 export class CoreModule { }

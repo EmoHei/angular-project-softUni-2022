@@ -23,8 +23,10 @@ import { formatCurrency } from '@angular/common';
 export class AllToursComponent {
   title = 'All Tours';
   public data: any = [];
-  public currentUserId: string
+  public currentUserId: string;
 
+  ReadMore: boolean = true;
+  visible: boolean = false;
 
   constructor(public firestore: Firestore, public router: Router) {
 
@@ -36,7 +38,7 @@ export class AllToursComponent {
     this.currentUserId = user.uid
 
   }
-  isCurrentUserOwner(ownerId:any){
+  isCurrentUserOwner(ownerId: any) {
     return (this.currentUserId == ownerId)
   }
 
@@ -65,10 +67,15 @@ export class AllToursComponent {
     deleteDoc(dataToDelete)
       .then(() => {
         alert('Data Deleted - <Successful>')
-        this.getData() 
+        this.getData()
       })
       .catch((err => {
         alert(err.message)
       }))
+  }
+  // Show/Hide
+  onclick() {
+    this.ReadMore = !this.ReadMore;
+    this.visible = !this.visible;
   }
 }

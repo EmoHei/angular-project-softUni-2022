@@ -64,8 +64,10 @@
            <p class="price">
               {{ item.price | currency : "EUR" }}  
             </p>
-
-          <div class="product-price-btn">
+                 <button (click)="onclick()" class="show-hide-btn">
+                  {{ReadMore?"More Details":"Less Details"}}
+                </button>
+          <div class="product-price-btn" *ngIf="visible">
            
             <!-- Owner -->
             <ng-template #Owner>

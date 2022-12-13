@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+ 
 }
 .wrapper {
   height: 420px;
@@ -136,8 +137,15 @@
   .book-now-btn {
     background-color: #9cebd5;
   }
+  
 }
-
 .product-price-btn button:hover {
   background-color: #79b0a1;
 }
+.show-hide-btn{
+    margin-left: 40px;
+    border: none;
+    color: #8d8d8d;
+    background-color: transparent;
+    cursor: pointer;
+  }

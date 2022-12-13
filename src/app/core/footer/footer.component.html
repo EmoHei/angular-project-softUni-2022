@@ -1,1 +1,34 @@
-<p>footer works!</p>
+<footer>
+  <div class="footer-content">
+    <!--add all information -->
+    <h3>Travel Market</h3>
+    <p>Travel Market --- source code.</p>
+  </div>
+  <div class="footer-bottom">
+    <!-- add all information -->
+    <p>copyright &copy;2022 <a routerLink="/">travelmarket</a></p>
+
+    <div class="footer-menu">
+      <ul class="f-menu">
+        <ng-template #User>
+        <li><a routerLink="/auth/profile">PROFILE</a></li> 
+        <li><a routerLink="/tour/all-tours">ALL-TOURS</a></li>
+        <li><a routerLink="/tour/new-tour">NEW-TOURS</a></li>
+        <li><a routerLink="contact">CONTACT</a></li>
+        <li><a (click)="logout()">LOGOUT</a></li>
+      </ng-template>
+
+<!-- Guest -->
+      <ng-template #Guest>
+        <li><a routerLink="/">HOME</a></li>
+        <li><a routerLink="/auth/login">LOGIN</a></li>
+        <li><a routerLink="/auth/register">REGISTER</a></li>
+      </ng-template>
+
+    
+      <ng-container *ngTemplateOutlet="isLoggedIn ? User : Guest"> 
+      </ng-container> 
+      </ul>
+    </div>
+  </div>
+</footer>

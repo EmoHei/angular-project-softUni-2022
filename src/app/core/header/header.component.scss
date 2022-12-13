@@ -1,4 +1,5 @@
 .navbar {
+   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,7 +34,7 @@
 .logo:hover {
   transform: scale(1.2);
   a {
-    color: red;
+box-shadow: 10px 5px 5px #79b0a1;
   }
 }
 /* NAVBAR MENU */
