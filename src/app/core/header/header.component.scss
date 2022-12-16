@@ -1,11 +1,13 @@
 .navbar {
+  position: relative;
+top: auto;
    width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-family: "Suranna", serif;
   padding: 20px;
-  background-color: #9cebd5;
+  background-color: #869f98;
   color: #fff;
 }
 .nav-links a {
@@ -25,7 +27,7 @@
 .logo {
   padding: 10px;
   font-size: 32px;
-  color: #fff;
+
   a {
     color: #fff;
     font-style: italic;
@@ -33,18 +35,17 @@
 }
 .logo:hover {
   transform: scale(1.2);
-  a {
-box-shadow: 10px 5px 5px #79b0a1;
-  }
+  
 }
 /* NAVBAR MENU */
 .menu {
   display: flex;
   gap: 1em;
   font-size: 18px;
+  
 }
 .menu li:hover {
-  background-color: #9cebd5;
+  background-color: #869f98;
   border-radius: 5px;
   transition: 0.3s ease;
 }
@@ -54,7 +55,7 @@ box-shadow: 10px 5px 5px #79b0a1;
 /* DROPDOWN MENU */
 
 .dropdown {
-  background-color: #9cebd5;
+   background-color: #869f98;
   padding: 1em 0;
   position: absolute; /*WITH RESPECT TO PARENT*/
   display: none;
@@ -72,7 +73,7 @@ box-shadow: 10px 5px 5px #79b0a1;
 }
 
 .dropdown li:hover {
-   background-color: #79b0a1;
+   background-color: #869f98;
 }
 
 .services:hover .dropdown {
@@ -96,7 +97,7 @@ input[type="checkbox"] {
   .menu {
     display: none;
     position: absolute;
-    background-color: #9cebd5;
+    background-color: #869f98;
     right: 0;
     left: 0;
     text-align: center;

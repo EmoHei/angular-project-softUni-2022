@@ -8,18 +8,21 @@ import { NewTourComponent } from './new-tour/new-tour.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
+import { SearchComponent } from './search/search.component';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
     AllToursComponent,
     NewTourComponent,
-
-    EditComponent
+    EditComponent,
+    SearchComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,
     TourRoutingModule,
-  MaterialModule,
+    MaterialModule,
     FormsModule
   ]
 })

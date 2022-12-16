@@ -1,0 +1,14 @@
+.search-container{
+    margin-top: 30px;
+    display: flex;
+ justify-content: center;
+ align-items: center;
+}
+input[type=text]{
+    background-color: rgb(240, 236, 236);
+    width: 240px;
+    height: 30px;
+    padding: 15px;
+    border: none;
+    margin-left: 10px;
+}

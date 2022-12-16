@@ -1,56 +1,18 @@
-<!-- <div>
-  <ul class="wrapper">
-    <li *ngFor="let item of data">
-      <div></div>
-      <mat-card class="tour-card">
-        <mat-card-header>
-          <mat-card-title>{{ item.name }}</mat-card-title>
-        </mat-card-header>
 
-        <img mat-card-image src="{{ item.image }}" alt="Tour-image" />
-        <div class="description-content">
-          <mat-card-content>
-            <p>
-              {{ item.description }}
-            </p>
-          </mat-card-content>
-        </div>
 
-        <mat-card-actions>
-          <ng-template #Owner>
-            <button
-              class="edit-btn"
-              mat-flat-button
-              routerLink="/tour/edit/{{ item.id }}"
-            >
-              EDIT
-            </button>
-
-            <button mat-flat-button color="warn" (click)="deleteData(item.id)">
-              DELETE
-            </button>
-          </ng-template>
-          <ng-template #Guest>
-            <button class="book-now-btn" mat-button>BOOK NOW</button>
-          </ng-template>
-          <div class="price">
-            <p>
-              <span>{{ item.price | currency : "CHF/" }}</span>
-            </p>
-          </div>
-          <ng-container
-            *ngTemplateOutlet="isCurrentUserOwner(item.ownerId) ? Owner : Guest"
-          ></ng-container>
-        </mat-card-actions>
-      </mat-card>
-    </li>
-  </ul>
-</div> -->
-
-<!--  Start New Card -->
 <article>
-  <ul class="card-content">
-    <li *ngFor="let item of data">
+<div >
+  <app-search></app-search>
+  <app-filter
+   [allTours]="getTotalTours()"
+   [dailyTours]="getDailyTours()"
+   [cityTours]="getCityTours()"
+ (filterRadioButtonSelectionChanged)="onFilterRadioButtonChanged($event)"
+   ></app-filter>
+</div>
+<ng-container *ngFor="let item of data">
+   <ul class="card-content">
+    <li  *ngIf="toursCountRadioButton === 'allTours' || toursCountRadioButton===item.category ">
       <div class="wrapper">
         <div class="product-img">
           <img src="{{ item.image }}" height="420" width="327" />
@@ -61,19 +23,17 @@
             <h2>by studio and friends</h2>
             <p>{{ item.description }}</p>
           </div>
-           <p class="price">
-              {{ item.price | currency : "EUR" }}  
-            </p>
-                 <button (click)="onclick()" class="show-hide-btn">
-                  {{ReadMore?"More Details":"Less Details"}}
-                </button>
+          <p class="price">
+            {{ item.price | currency : "EUR" }}
+          </p>
+          <button (click)="onclick()" class="show-hide-btn">
+            {{ ReadMore ? "More Details" : "Less Details" }}
+          </button>
           <div class="product-price-btn" *ngIf="visible">
-           
             <!-- Owner -->
             <ng-template #Owner>
               <button
                 class="edit-btn"
-           
                 mat-flat-button
                 routerLink="/tour/edit/{{ item.id }}"
               >
@@ -82,7 +42,7 @@
 
               <button
                 mat-flat-button
-               class="delete-btn"
+                class="delete-btn"
                 (click)="deleteData(item.id)"
               >
                 DELETE
@@ -99,11 +59,11 @@
                 isCurrentUserOwner(item.ownerId) ? Owner : Guest
               "
             ></ng-container>
-
-          
           </div>
         </div>
       </div>
     </li>
   </ul>
+</ng-container>
+ 
 </article>

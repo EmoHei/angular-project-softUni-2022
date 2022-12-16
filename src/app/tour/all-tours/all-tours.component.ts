@@ -3,16 +3,12 @@ import { Router } from '@angular/router';
 import {
   Firestore,
   collection,
-  // for get
   getDocs,
-  // for update
   doc,
-  updateDoc,
-  // for delete
   deleteDoc
 
 } from '@angular/fire/firestore';
-import { formatCurrency } from '@angular/common';
+
 
 @Component({
   selector: 'app-all-tours',
@@ -21,23 +17,20 @@ import { formatCurrency } from '@angular/common';
 })
 
 export class AllToursComponent {
-  title = 'All Tours';
+  public title = 'All Tours';
   public data: any = [];
   public currentUserId: string;
-
-  ReadMore: boolean = true;
-  visible: boolean = false;
+  public ReadMore: boolean = true;
+  public visible: boolean = false;
 
   constructor(public firestore: Firestore, public router: Router) {
 
     this.getData()
     const userData = localStorage.getItem('user')
-
-
     const user = JSON.parse(userData ?? "")
     this.currentUserId = user.uid
-
   }
+
   isCurrentUserOwner(ownerId: any) {
     return (this.currentUserId == ownerId)
   }
@@ -49,10 +42,10 @@ export class AllToursComponent {
 
     getDocs(dbInstance)
       .then((res) => {
-        console.log(res.docs.map((item) => {
-          console.log(item.id);
-          return { ...item.data(), id: item.id }
-        }));
+        // console.log(res.docs.map((item) => {
+    
+        //   return { ...item.data(), id: item.id }
+        // }));
 
         this.data = [...res.docs.map((item) => {
           return { ...item.data(), id: item.id }
@@ -61,7 +54,7 @@ export class AllToursComponent {
       })
   }
 
-  // Delete Data
+  // Delete 
   deleteData(id: string) {
     const dataToDelete = doc(this.firestore, 'tours', id)
     deleteDoc(dataToDelete)
@@ -77,5 +70,22 @@ export class AllToursComponent {
   onclick() {
     this.ReadMore = !this.ReadMore;
     this.visible = !this.visible;
+  }
+  // Filter
+  getTotalTours() {
+    return this.data.length;
+  }
+
+  getDailyTours() {
+    return this.data.filter(tour => tour.category === 'dailyTours').length;
+
+  }
+  getCityTours() {
+    return this.data.filter(tour => tour.category === 'cityTours').length;
+  }
+  toursCountRadioButton: string = 'allTours';
+
+  onFilterRadioButtonChanged(data: string) {
+    this.toursCountRadioButton = data;
   }
 }

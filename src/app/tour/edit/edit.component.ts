@@ -48,7 +48,7 @@ export class EditComponent {
 
     )
       .then(() => {
-        alert('Data Updated - <Successful>')
+       
         this.router.navigate(['/tour/all-tours'])
       })
       .catch((err => {

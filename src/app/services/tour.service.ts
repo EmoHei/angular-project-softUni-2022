@@ -2,12 +2,9 @@ import { Injectable } from '@angular/core';
 import {
   Firestore,
   collection,
-  // for get
   getDocs,
-  // for update
   doc,
   updateDoc,
-  // for delete
   deleteDoc
 
 } from '@angular/fire/firestore';

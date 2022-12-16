@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-
-import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  {path:'auth',
-  children:[
-  { path: 'login', component: LoginComponent, data: { title: 'Login' } },
-  { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
- 
-  { path: 'profile', component: ProfileComponent, data: { title: 'Profile' } },
-]
-}
+  {
+    path: 'auth',
+    children: [
+      { path: 'login', component: LoginComponent, data: { title: 'Login' } },
+      { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
+
+    ]
+  }
 ];
 
 @NgModule({
@@ -21,4 +19,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AuthRoutingModule { }
-  // export const AuthRoutingModule = RouterModule.forChild(routes);

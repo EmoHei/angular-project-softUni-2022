@@ -1,9 +1,9 @@
 footer {
-  position: sticky;
-  bottom: 0;
+  position: absolute;
+  bottom: -1;
   left: 0;
   right: 0;
-   background-color: #9cebd5;
+   background-color: #869f98;
   height: auto;
   width: 100vw;
   padding-top: 40px;
@@ -26,7 +26,7 @@ footer {
     margin: 10px auto;
     line-height: 28px;
     font-size: 14px;
-     color: #fff;
+    color: #fff;
   }
 }
 .footer-bottom {
@@ -73,10 +73,10 @@ footer {
 .footer-menu ul li a:hover {
   color: #27bcda;
 }
-@media (max-width:500px) {
-.footer-menu ul{
-  display: flex;
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
+@media (max-width: 500px) {
+  .footer-menu ul {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
 }
