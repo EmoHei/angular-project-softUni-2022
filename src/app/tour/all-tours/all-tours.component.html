@@ -1,26 +1,28 @@
-
-
-<article>
-<div >
-  <app-search></app-search>
+<div>
   <app-filter
-   [allTours]="getTotalTours()"
-   [dailyTours]="getDailyTours()"
-   [cityTours]="getCityTours()"
- (filterRadioButtonSelectionChanged)="onFilterRadioButtonChanged($event)"
-   ></app-filter>
+    [allTours]="getTotalTours()"
+    [dailyTours]="getDailyTours()"
+    [cityTours]="getCityTours()"
+    (filterRadioButtonSelectionChanged)="onFilterRadioButtonChanged($event)"
+  ></app-filter>
 </div>
-<ng-container *ngFor="let item of data">
-   <ul class="card-content">
-    <li  *ngIf="toursCountRadioButton === 'allTours' || toursCountRadioButton===item.category ">
-      <div class="wrapper">
+
+ <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+
+<div class="card-content">
+  <ul *ngFor="let item of data">
+    <li
+      *ngIf="toursCountRadioButton === 'allTours' ||
+        toursCountRadioButton === item.category  "  
+    >
+      <div class="wrapper"   *ngIf="searchText === '' || item.name.toLowerCase().includes(searchText)">
         <div class="product-img">
           <img src="{{ item.image }}" height="420" width="327" />
         </div>
         <div class="product-info">
           <div class="product-text">
             <h1>{{ item.name }}</h1>
-            <h2>by studio and friends</h2>
+            <h2>{{ item.category }}</h2>
             <p>{{ item.description }}</p>
           </div>
           <p class="price">
@@ -64,6 +66,8 @@
       </div>
     </li>
   </ul>
-</ng-container>
- 
-</article>
+
+
+</div>
+<div class="noTours" *ngIf="!data"> 
+</div>

@@ -7,23 +7,23 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
+import { MatSelectModule } from '@angular/material/select';
 
 
 
 @NgModule({
 
-  imports: [  
-  MatToolbarModule,
-  MatButtonModule,
-  MatMenuModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatCardModule,
-  MatIconModule,
-  MatSidenavModule,
-
-],
+  imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatSelectModule,
+  ],
   exports: [
     MatToolbarModule,
     MatButtonModule,
@@ -32,6 +32,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatInputModule,
     MatCardModule,
     MatIconModule,
-    MatSidenavModule,]
+    MatSidenavModule,
+    MatSelectModule,
+
+  ]
 })
 export class MaterialModule { }

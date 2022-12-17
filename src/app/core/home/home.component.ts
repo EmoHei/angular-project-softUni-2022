@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  backgroundImg:string = '/client/src/assets/images/background.jpg'
 }

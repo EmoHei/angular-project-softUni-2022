@@ -28,7 +28,27 @@
     </div>
 
     <!-- Category -->
-
+    <mat-form-field appearance="fill">
+      <mat-label>Select a category</mat-label>
+      <mat-select
+        name="category"
+        [(value)]="selectedValue"
+        [(ngModel)]="form.category"
+        #tourCategoryField="ngModel"
+        required
+      >
+        <mat-option value="Daily Tour">Daily Tour</mat-option>
+        <mat-option value="City Tour">City Tour</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div
+      *ngIf="tourCategoryField.touched && tourCategoryField.errors"
+      class="error-msg"
+    >
+      <div *ngIf="tourCategoryField.errors['required']">
+        Category is required!
+      </div>
+    </div>
     <!-- Image -->
     <mat-form-field appearance="fill">
       <mat-label>Add Image</mat-label>
@@ -42,16 +62,12 @@
         [ngClass]="{ 'is-invalid': imageField.errors }"
         placeholder="https://example.image.png"
       />
-      
     </mat-form-field>
 
     <!-- Error Msg -->
-    <div 
-      *ngIf="imageField.touched && imageField.errors"
-      class="error-msg"
-    > 
+    <div *ngIf="imageField.touched && imageField.errors" class="error-msg">
       <div *ngIf="imageField.errors['required']">Image is required</div>
-    </div> 
+    </div>
 
     <!-- Price -->
     <mat-form-field appearance="fill">
@@ -70,26 +86,17 @@
         placeholder="Price"
       />
     </mat-form-field>
-     <div
-      *ngIf="priceField.touched && priceField.errors"
-      class="error-msg"
-    >
-      <div *ngIf="priceField.errors['required']">
-        Price is required!
-      </div>
-      <div *ngIf="priceField.errors['min']">
-        Price must be at least 10 EUR!
-      </div>
-      <div *ngIf="priceField.errors['max']">
-        Price can be max. 300 EUR!
-      </div>
+    <div *ngIf="priceField.touched && priceField.errors" class="error-msg">
+      <div *ngIf="priceField.errors['required']">Price is required!</div>
+      <div *ngIf="priceField.errors['min']">Price must be at least 10 EUR!</div>
+      <div *ngIf="priceField.errors['max']">Price can be max. 300 EUR!</div>
     </div>
     <!-- Description -->
 
     <mat-form-field appearance="fill">
       <mat-label>Add Description</mat-label>
       <textarea
-      rows="3"
+        rows="3"
         matInput
         type="text"
         name="description"
@@ -130,6 +137,6 @@
         Add Tour
       </button>
     </div>
-
   </form>
 </div>
+

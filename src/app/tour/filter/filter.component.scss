@@ -1,8 +1,16 @@
-.filter-container{
- display: flex;
- justify-content: center;
+.filter-container {
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #869f98;
+  color: #fff;
+  max-width: 700px;
+  height: 30px;
+  border-radius:0px  0px 25px   25px ;
 }
-input[type=radio]{
-    margin-left: 10px;
-    
+
+input[type="radio"] {
+  margin-left: 10px;
+  cursor: pointer;
 }

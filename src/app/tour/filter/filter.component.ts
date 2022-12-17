@@ -1,4 +1,4 @@
-import { Component,  EventEmitter,  Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -7,8 +7,8 @@ import { Component,  EventEmitter,  Input, Output } from '@angular/core';
 })
 export class FilterComponent {
 
-  constructor(){}
-  
+  constructor() { }
+
   @Input() allTours: number = 0;
   @Input() dailyTours: number = 0;
   @Input() cityTours: number = 0;
@@ -16,11 +16,9 @@ export class FilterComponent {
   selectedRadioButtonValue: string = 'allTours'
 
   @Output()
-filterRadioButtonSelectionChanged: EventEmitter<string> = new EventEmitter<string>();
+  filterRadioButtonSelectionChanged: EventEmitter<string> = new EventEmitter<string>();
 
-  onRadioButtonSelectionChanged(){
-   this.filterRadioButtonSelectionChanged.emit(this.selectedRadioButtonValue);
-
-    
+  onRadioButtonSelectionChanged() {
+    this.filterRadioButtonSelectionChanged.emit(this.selectedRadioButtonValue);
   }
 }

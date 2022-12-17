@@ -1,14 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  Firestore,
-  collection,
-  getDocs,
-  doc,
-  deleteDoc
-
-} from '@angular/fire/firestore';
-
+import {Firestore, collection, getDocs,  doc, deleteDoc} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-all-tours',
@@ -42,14 +34,8 @@ export class AllToursComponent {
 
     getDocs(dbInstance)
       .then((res) => {
-        // console.log(res.docs.map((item) => {
-    
-        //   return { ...item.data(), id: item.id }
-        // }));
-
         this.data = [...res.docs.map((item) => {
           return { ...item.data(), id: item.id }
-
         })]
       })
   }
@@ -77,15 +63,26 @@ export class AllToursComponent {
   }
 
   getDailyTours() {
-    return this.data.filter(tour => tour.category === 'dailyTours').length;
+    return this.data.filter(tour => tour.category === 'Daily Tour').length;
 
   }
   getCityTours() {
-    return this.data.filter(tour => tour.category === 'cityTours').length;
+    return this.data.filter(tour => tour.category === 'City Tour').length;
   }
+
   toursCountRadioButton: string = 'allTours';
 
   onFilterRadioButtonChanged(data: string) {
     this.toursCountRadioButton = data;
   }
+
+  //  Search
+
+  searchText: string = '';
+  onSearchTextEntered(searchValue:string){
+   this.searchText = searchValue;
+   
+   
+  }
+
 }

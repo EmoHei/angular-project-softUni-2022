@@ -1,23 +1,29 @@
 
 <div class="filter-container">
-    <span>Filter:</span>
-
-    <input type="radio" name="filter" value="allTours"
+    <span class="filter-">Filter:</span>
+<div>
+     <input type="radio" name="filter" value="allTours"
     [(ngModel)]="selectedRadioButtonValue"
     (change)="onRadioButtonSelectionChanged()"
     />
     <span>{{'All Tours('+allTours+')'}}</span>
-
-    <input type="radio" name="filter" value="cityTours"
+</div>
+   <div>
+     <input type="radio" name="filter" value="City Tour"
      [(ngModel)]="selectedRadioButtonValue"
      (change)="onRadioButtonSelectionChanged()"
      />
     <span>{{'City Tours('+cityTours+')'}}</span>
+   </div>
 
-    <input type="radio" name="filter" value="dailyTours" 
+   <div>
+     <input type="radio" name="filter" value="Daily Tour" 
     [(ngModel)]="selectedRadioButtonValue"
     (change)="onRadioButtonSelectionChanged()"
     />
     <span>{{'Daily Tours('+dailyTours+')'}}</span>
+   </div>
+
+   
 
 </div>
