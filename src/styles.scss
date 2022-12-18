@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
+
 * {
   margin: 0;
   padding: 0;
@@ -9,16 +8,12 @@ html,body {
   min-height: 100%;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  //  background-color: #bec3c7;
-  background-image:linear-gradient(rgba(248, 243, 243, 0.75),rgba(244, 240, 240, 0.75)),url('assets/images/background.jpg') ;
+   background-color: #eff4f7;
+background-repeat: no-repeat;
 }
 
 main{
 height: 100%; 
-}
-body > app-root{
- 
-
 }
 
 a {
@@ -52,11 +47,4 @@ li {
     text-align: center;
   }
 }
-.banner {
-  width: 100%;
-  height: 100vh;
-  background-image: linear-gradient (rgb(0, 0, 0, 0.75)), rgb(0, 0, 0, 0.75),
-    url("/client/src/assets/images/background.jpg");
-  background-size: content;
-  background-position: center;
-}
+
