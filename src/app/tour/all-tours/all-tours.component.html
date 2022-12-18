@@ -7,15 +7,22 @@
   ></app-filter>
 </div>
 
- <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+<app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
 
 <div class="card-content">
   <ul *ngFor="let item of data">
     <li
-      *ngIf="toursCountRadioButton === 'allTours' ||
-        toursCountRadioButton === item.category  "  
+      *ngIf="
+        toursCountRadioButton === 'allTours' ||
+        toursCountRadioButton === item.category
+      "
     >
-      <div class="wrapper"   *ngIf="searchText === '' || item.name.toLowerCase().includes(searchText)">
+      <div
+        class="wrapper"
+        *ngIf="
+          searchText === '' || item.name.toLowerCase().includes(searchText)
+        "
+      >
         <div class="product-img">
           <img src="{{ item.image }}" height="420" width="327" />
         </div>
@@ -28,46 +35,33 @@
           <p class="price">
             {{ item.price | currency : "EUR" }}
           </p>
-          <button (click)="onclick()" class="show-hide-btn">
-            {{ ReadMore ? "More Details" : "Less Details" }}
-          </button>
-          <div class="product-price-btn" *ngIf="visible">
-            <!-- Owner -->
-            <ng-template #Owner>
-              <button
-                class="edit-btn"
-                mat-flat-button
-                routerLink="/tour/edit/{{ item.id }}"
-              >
-                EDIT
+                            <!-- Details -->
+          <!-- Owner -->
+          <ng-template #Owner>
+            <button
+              [className]="['details-btn']"
+              [routerLink]="['/tour/tourDetails', item.id]"
+              class="btn btn-primary"
+            >
+              Details
+            </button>
+          </ng-template>
+
+          <!-- Guest -->
+          <ng-template #Guest>
+            <div *ngIf="!isCurrentUserOwner(item.ownerId)">
+              <button class="book-now-btn" color="primary" mat-button>
+                BOOK NOW
               </button>
+            </div>
+          </ng-template>
 
-              <button
-                mat-flat-button
-                class="delete-btn"
-                (click)="deleteData(item.id)"
-              >
-                DELETE
-              </button>
-            </ng-template>
-
-            <!-- Guest -->
-            <ng-template #Guest>
-              <button class="book-now-btn" mat-button>BOOK NOW</button>
-            </ng-template>
-
-            <ng-container
-              *ngTemplateOutlet="
-                isCurrentUserOwner(item.ownerId) ? Owner : Guest
-              "
-            ></ng-container>
-          </div>
+          <ng-container
+            *ngTemplateOutlet="isCurrentUserOwner(item.ownerId) ? Owner : Guest"
+          ></ng-container>
+         
         </div>
       </div>
     </li>
   </ul>
-
-
 </div>
-
-

@@ -8,12 +8,16 @@ import {
   deleteDoc
 
 } from '@angular/fire/firestore';
+import { getDoc } from 'firebase/firestore';
 @Injectable({
   providedIn: 'root'
 })
 export class TourService {
   public data: any = [];
-  constructor(public  firestore:Firestore) { 
+
+  form: any
+  tourId!: string
+  constructor(public firestore: Firestore) {
     this.getData()
   }
 
@@ -39,7 +43,7 @@ export class TourService {
   updateData(id: string) {
     const dataToUpdate = doc(this.firestore, 'tours', id)
     updateDoc(dataToUpdate, {
-      // TODO This is static!! Make dinamic wit form
+
       tourName: '',
       tourPrice: '',
     })
@@ -66,5 +70,14 @@ export class TourService {
       }))
   }
 
+  // getDataById
+  getDataBtId(id: any) {
+    const dbInstance = doc(this.firestore, 'tours', id);
 
+    getDoc(dbInstance)
+      .then((res) => {
+        this.form = res.data();
+
+      });
+  }
 }

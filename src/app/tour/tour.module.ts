@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 import { SearchComponent } from './search/search.component';
 import { FilterComponent } from './filter/filter.component';
+import { TourDetailComponent } from './tour-detail/tour-detail.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FilterComponent } from './filter/filter.component';
     NewTourComponent,
     EditComponent,
     SearchComponent,
-    FilterComponent
+    FilterComponent,
+    TourDetailComponent
   ],
   imports: [
     CommonModule,

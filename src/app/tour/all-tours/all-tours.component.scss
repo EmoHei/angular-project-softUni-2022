@@ -1,18 +1,16 @@
-
-body{
+body {
   background: none;
 }
 
- .card-content{
+.card-content {
   min-height: 100vh;
   margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-ul li:hover{
+ul li:hover {
   border-radius: 20px 20px 20px 20px;
- 
 }
 
 .wrapper {
@@ -23,10 +21,9 @@ ul li:hover{
   width: 665px;
   margin: 20px 32px;
   border-radius: 20px 20px 20px 20px;
-    
 }
-.wrapper:hover{
-   box-shadow:0px 0px 0px 5px  #1C62B9; ;
+.wrapper:hover {
+  box-shadow: 0px 0px 0px 5px #1c62b9;
 }
 .product-img {
   float: left;
@@ -40,7 +37,6 @@ ul li:hover{
   width: 500px;
   background-size: contain;
   border-radius: 20px 0px 0px 20px;
- 
 }
 .product-info {
   float: left;
@@ -117,50 +113,52 @@ ul li:hover{
   justify-content: center;
   width: 320px;
   margin: auto;
-
-  button {
-    float: right;
-    display: inline-block;
-    height: 30px;
-    width: 176px;
-    margin: 0 40px 0 16px;
-    box-sizing: border-box;
-    border: transparent;
-    border-radius: 25px;
-    font-family: "Raleway", sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: #ffffff;
-    cursor: pointer;
-    outline: none;
-  }
-  .edit-btn {
-    background-color: rgb(248, 212, 146);
-  }
-  .edit-btn:hover {
-    background-color: orange;
-  }
-  .delete-btn {
-    background-color: rgb(251, 130, 130);
-  }
-  .delete-btn:hover {
-    background-color: rgb(236, 10, 10);
-  }
-  .book-now-btn {
-    background-color: #3da248;
-  }
-  
 }
+button {
+  float: right;
+  display: inline-block;
+  height: 30px;
+  width: 176px;
+  margin: 0 40px 0 16px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 6px;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+}
+.details-btn {
+  background-color: rgb(248, 212, 146);
+  margin-right: 90px;
+}
+// .edit-btn {
+//   background-color: rgb(248, 212, 146);
+// }
+// .edit-btn:hover {
+//   background-color: orange;
+// }
+// .delete-btn {
+//   background-color: rgb(251, 130, 130);
+// }
+// .delete-btn:hover {
+//   background-color: rgb(236, 10, 10);
+// }
+.book-now-btn {
+  margin-right: 80px;
+}
+
 .product-price-btn button:hover {
   background-color: #4dda8d;
 }
-.show-hide-btn{
-    margin-left: 40px;
-    border: none;
-    color: #8d8d8d;
-    background-color: transparent;
-    cursor: pointer;
-  }
-
+.show-hide-btn {
+  margin-left: 40px;
+  border: none;
+  color: #8d8d8d;
+  background-color: transparent;
+  cursor: pointer;
+}

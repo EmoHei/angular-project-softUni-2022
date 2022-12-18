@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {Firestore, collection, getDocs,  doc, deleteDoc} from '@angular/fire/firestore';
+import { Firestore, collection, getDocs, doc, deleteDoc } from '@angular/fire/firestore';
+import { TourService } from 'src/app/services/tour.service';
 
 @Component({
   selector: 'app-all-tours',
@@ -15,7 +16,7 @@ export class AllToursComponent {
   public ReadMore: boolean = true;
   public visible: boolean = false;
 
-  constructor(public firestore: Firestore, public router: Router) {
+  constructor(public firestore: Firestore, public router: Router, public service:TourService ) {
 
     this.getData()
     const userData = localStorage.getItem('user')
@@ -57,10 +58,11 @@ export class AllToursComponent {
     this.ReadMore = !this.ReadMore;
     this.visible = !this.visible;
   }
-  // Filter
+  Filter
   getTotalTours() {
     return this.data.length;
   }
+
 
   getDailyTours() {
     return this.data.filter(tour => tour.category === 'Daily Tour').length;
@@ -79,10 +81,8 @@ export class AllToursComponent {
   //  Search
 
   searchText: string = '';
-  onSearchTextEntered(searchValue:string){
-   this.searchText = searchValue;
-   
-   
+  onSearchTextEntered(searchValue: string) {
+    this.searchText = searchValue;
   }
 
 }

@@ -44,12 +44,11 @@ export class EditComponent {
 
   updateData() {
     const dataToUpdate = doc(this.firestore, 'tours', this.tourId)
-    updateDoc(dataToUpdate, this.form
+    updateDoc(dataToUpdate, this.form)
 
-    )
       .then(() => {
-       
         this.router.navigate(['/tour/all-tours'])
+        
       })
       .catch((err => {
         alert(err.message)

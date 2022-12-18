@@ -1,0 +1,75 @@
+.card-content {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  justify-content: center;
+  background-color: rgb(246, 252, 252);
+  margin: 30px;
+  border-radius: 25px;
+  border: 1px solid gray;
+  padding: 30px;
+  article {
+    height: 600px;
+  }
+  .description-container p {
+    font-size: 16px;
+    color: rgb(103, 102, 102);
+  }
+  .price-container {
+    margin: 20px;
+    display: flex;
+    justify-content: end;
+    .price {
+      margin-top: 30px;
+      font-size: 32px;
+      color: gray;
+      font-weight: 500;
+    }
+  }
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 30px;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px 0px 0px 20px;
+    img {
+      max-width: 100%;
+      height: auto;
+        background-size: contain;
+     
+      border-radius: 20px 20px 20px 20px;
+    }
+  }
+  .price-container {
+    margin: 100px;
+  }
+}
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+
+  float: left;
+}
+.btn-row {
+  display: flex;
+  justify-content: space-between;
+}
+button {
+  margin: 20px;
+  width: 130px;
+  border: 1px solid rgb(224, 224, 251);
+  padding: 20px;
+  color: white;
+
+  .edit-btn {
+    background: orange;
+  }
+  .delete-btn {
+    background-color: red;
+  }
+}

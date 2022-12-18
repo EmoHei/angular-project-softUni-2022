@@ -1,0 +1,71 @@
+<div class="card-content">
+  <div class="titel-container">
+    <h1>{{ form?.name }}</h1>
+    <p>{{form?.category}}</p>
+  </div>
+  <article>
+    <section class="image-container">
+      <img src="{{ form?.image }}" alt="" />
+    </section>
+    <section class="description-container">
+      <p>{{ form.description }}</p>
+    </section>
+  </article>
+
+  <div class="price-container">
+    <p class="price">{{ form?.price | currency : "EUR" }}</p>
+  </div>
+  <div class="buttons-container">
+    <!-- Show/Hide -->
+    <div class="btn-row">
+      <button
+        color="primary"
+        mat-stroked-button
+        (click)="onclick()"
+        class="show-hide-btn"
+      >
+        {{ ReadMore ? "SHOW EDIT/DELETE" : "HIDE EDIT/DELETE" }}
+      </button>
+      <button
+        color="primary"
+        class="back-btn"
+        mat-stroked-button
+        routerLink="/tour/all-tours"
+      >
+        Back >>
+      </button>
+    </div>
+
+    <div class="button-container" *ngIf="visible">
+      <!-- Owner -->
+      <ng-template #Owner>
+        <button
+          class="edit-btn"
+         mat-flat-button
+           color="primary"
+         
+          routerLink="/tour/edit/{{ tourId }}"
+        >
+          EDIT
+        </button>
+
+        <button 
+        mat-flat-button
+           color="warn"
+        class="delete-btn" 
+        (click)="deleteData(tourId)">
+          DELETE
+        </button>
+      </ng-template>
+
+      <!-- Guest -->
+      <ng-template #Guest>
+        <button class="book-now-btn" mat-button>BOOK NOW</button>
+      </ng-template>
+
+      <ng-container
+        *ngTemplateOutlet="isCurrentUserOwner(form.ownerId) ? Owner : Guest"
+      ></ng-container>
+    </div>
+  </div>
+</div>
